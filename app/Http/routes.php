@@ -11,6 +11,9 @@
 |
 */
 
+use App\Dictionarys;
+
+
 Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
@@ -20,6 +23,31 @@ Route::controllers([
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::get('gettext/{qtext}', ['as' => 'gettext', function ($qtext) {
+			
+			
+			$dictionay = Dictionarys::where('active',1)
+									->where('qtext','=',$qtext)
+									->get();
+
+			if(count($dictionary)>0)
+			{
+
+				return view('pages.welcome')
+			->with('$dictionary', $dictionary[0]);
+			}
+			else
+			{
+				return view('pages.welcome');
+			}
+
+			
+			
+			
+			
+		}]);
+
+		Route::resource('searchs','SearchController');
 
 
 	Route::group(['middleware' => 'auth'],function()
@@ -48,6 +76,8 @@ Route::controllers([
 				{
 					
 					Route::resource('userspannel','UserspannelController');
+					Route::resource('dictionarys','DictionaryController');
+
 					
 				});
 

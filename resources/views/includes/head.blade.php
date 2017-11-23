@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Aung Thein Naing">
 
-    <title>STIMU Management System</title>
+    <title>idictionary</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo url(); ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
